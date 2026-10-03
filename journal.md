@@ -1,211 +1,145 @@
-1)
-DELL@DESKTOP-OCF6B43 MINGW64 ~/Desktop/TP/tp-02-zones-git/inventaire
+# Journal TP 02 — Comprendre les zones Git
+
+1) Un dépôt neuf
+
 $ git init
 Initialized empty Git repository in C:/Users/DELL/Desktop/TP/tp-02-zones-git/inventaire/.git/
 
-DELL@DESKTOP-OCF6B43 MINGW64 ~/Desktop/TP/tp-02-zones-git/inventaire (main)
-$ ^C
-
-DELL@DESKTOP-OCF6B43 MINGW64 ~/Desktop/TP/tp-02-zones-git/inventaire (main)
-
 $ git status
 On branch main
-
 No commits yet
-
 Untracked files:
-  (use "git add <file>..." to include in what will be committed)
         README.md
         pom.xml
         src/
+nothing added to commit but untracked files present
 
-nothing added to commit but untracked files present (use "git add" to track)
+- Phrase exacte quand aucun commit n'existe : "No commits yet"
+- Ce que Git dit de src/ : affiché comme "src/" (avec slash) = un dossier, pas un fichier
 
-DELL@DESKTOP-OCF6B43 MINGW64 ~/Desktop/TP/tp-02-zones-git/inventaire (main)
-$ ^C
+2) Contenu de .git/
 
-DELL@DESKTOP-OCF6B43 MINGW64 ~/Desktop/TP/tp-02-zones-git/inventaire (main)
-$
-
-2) Le contenu de .git/
-
-
-DELL@DESKTOP-OCF6B43 MINGW64 ~/Desktop/TP/tp-02-zones-git/inventaire (main)
 $ ls -a .git
 ./  ../  HEAD  config  description  hooks/  info/  objects/  refs/
 
-DELL@DESKTOP-OCF6B43 MINGW64 ~/Desktop/TP/tp-02-zones-git/inventaire (main)
-$ ^C
+- Nombre d'entrées : 9 (dont ./ et ../)
+- Entrée pour la branche courante : HEAD
+- Entrée pour le stockage du contenu : objects/
 
-Etape paire de ma prédiction pour 
+3) Paire prévue : untracked/untracked
 
-3)untracked/untracked
-
-DELL@DESKTOP-OCF6B43 MINGW64 ~/Desktop/TP/tp-02-zones-git/inventaire (main)
 $ git status
 On branch main
-
 No commits yet
-
 Untracked files:
-  (use "git add <file>..." to include in what will be committed)
         README.md
         journal.md
         pom.xml
         src/
+nothing added to commit but untracked files present
 
-nothing added to commit but untracked files present (use "git add" to track)
+Paire réelle : untracked/untracked
 
+4) Paire prévue : staged/unmodified
 
-
-4)staged/unmodified
-
-
-DELL@DESKTOP-OCF6B43 MINGW64 ~/Desktop/TP/tp-02-zones-git/inventaire (main)
 $ git add README.md
-warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
-
-DELL@DESKTOP-OCF6B43 MINGW64 ~/Desktop/TP/tp-02-zones-git/inventaire (main)
 $ git status
 On branch main
-
 No commits yet
-
 Changes to be committed:
-  (use "git rm --cached <file>..." to unstage)
         new file:   README.md
-
 Untracked files:
-  (use "git add <file>..." to include in what will be committed)
         journal.md
         pom.xml
         src/
 
+Paire réelle : staged/unmodified
 
-DELL@DESKTOP-OCF6B43 MINGW64 ~/Desktop/TP/tp-02-zones-git/inventaire (main)
-$ ^C
+ 5) Paire prévue : staged/modified
 
-
-
-5)staged/modified
-
-DELL@DESKTOP-OCF6B43 MINGW64 ~/Desktop/TP/tp-02-zones-git/inventaire (main)
 $ git status
 On branch main
-
-No commits yet
-
 Changes to be committed:
-  (use "git rm --cached <file>..." to unstage)
         new file:   README.md
-
 Untracked files:
-  (use "git add <file>..." to include in what will be committed)
         journal.md
         pom.xml
         src/
 
+Paire réelle : staged/modified
 
-DELL@DESKTOP-OCF6B43 MINGW64 ~/Desktop/TP/tp-02-zones-git/inventaire (main)
-$
+- Nombre d'apparitions de README.md : 2 fois
+  → 1 fois dans "Changes to be committed" (version index)
+  → 1 fois dans "Changes not staged for commit" (version disque modifiée)
 
+6) Paire prévue : unmodified/modified
 
-6)unmodified/modified
-
-DELL@DESKTOP-OCF6B43 MINGW64 ~/Desktop/TP/tp-02-zones-git/inventaire (main)
 $ git commit -m "ajouter README"
 [main (root-commit) ce0db2b] ajouter README
  1 file changed, 11 insertions(+)
- create mode 100644 README.md
 
-DELL@DESKTOP-OCF6B43 MINGW64 ~/Desktop/TP/tp-02-zones-git/inventaire (main)
-$  git status
+$ git status
 On branch main
 Untracked files:
-  (use "git add <file>..." to include in what will be committed)
         journal.md
         pom.xml
         src/
 
-nothing added to commit but untracked files present (use "git add" to track)
+Paire réelle : unmodified/modified
+Ce qui reste : README.md reste modifié non stagé (la modification de l'étape 5 n'était pas dans l'index)
 
-DELL@DESKTOP-OCF6B43 MINGW64 ~/Desktop/TP/tp-02-zones-git/inventaire (main)
-$
+7) Paire prévue : unmodified/unmodified
 
-
-7)unmodified/unmodified
-
-DELL@DESKTOP-OCF6B43 MINGW64 ~/Desktop/TP/tp-02-zones-git/inventaire (main)
 $ git add README.md
-
-DELL@DESKTOP-OCF6B43 MINGW64 ~/Desktop/TP/tp-02-zones-git/inventaire (main)
 $ git commit -m "complète README"
-On branch main
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-        journal.md
-        pom.xml
-        src/
-
-nothing added to commit but untracked files present (use "git add" to track)
-
-DELL@DESKTOP-OCF6B43 MINGW64 ~/Desktop/TP/tp-02-zones-git/inventaire (main)
 $ git status
 On branch main
 Untracked files:
-  (use "git add <file>..." to include in what will be committed)
         journal.md
         pom.xml
         src/
+nothing added to commit but untracked files present
 
-nothing added to commit but untracked files present (use "git add" to track)
+Paire réelle : unmodified/unmodified
 
-DELL@DESKTOP-OCF6B43 MINGW64 ~/Desktop/TP/tp-02-zones-git/inventaire (main)
-$
+8) Modifier README.md + indexer pom.xml
 
-8)Modifier readme.md et indexer pom.xml
-
-DELL@DESKTOP-OCF6B43 MINGW64 ~/Desktop/TP/tp-02-zones-git/inventaire (main)
 $ git add pom.xml
-warning: in the working copy of 'pom.xml', LF will be replaced by CRLF the next time Git touches it
-
-DELL@DESKTOP-OCF6B43 MINGW64 ~/Desktop/TP/tp-02-zones-git/inventaire (main)
 $ git status -s
 A  pom.xml
 ?? journal.md
 ?? src/
 
-DELL@DESKTOP-OCF6B43 MINGW64 ~/Desktop/TP/tp-02-zones-git/inventaire (main)
-$
+9) Explication des colonnes
 
-9) explication des colones
+- 1ère colonne (gauche) : état dans l'INDEX
+- 2ème colonne (droite) : état dans le RÉPERTOIRE DE TRAVAIL
 
-première colone(gauche) : état dans l'index
-deuxième colonr(droite) : état dans le répertoire 
+Fichier , Code , Signification 
+pom.xml , A  , Ajouté à l'index 
+ journal.md ,??, Non suivi(untracked) 
+ src/ ,?? ,Non suivi(untracked) 
 
-fichier , code ,signification
+10) Retirer pom.xml de l'index
 
-pom.xml , M, modifié et indexé
-README.md , M ,modifié non indexé
-src/, non suivi(untracked)
+ Commande trouvée dans git status : git restore --staged 
+ Commande utilisée : git restore --staged pom.xml
+ Zone après : répertoire de travail (untracked)
 
+11) git log --oneline
 
-10)retirer pom.xml de l'index
+$ git log --oneline
+5766e0a (HEAD -> main) ajout du README
 
-DELL@DESKTOP-OCF6B43 MINGW64 ~/Desktop/TP/tp-02-zones-git/inventaire (main)
-$ git status -s
-A  pom.xml
-?? journal.md
-?? src/
+- Nombre de commits : 2 (après le commit final)
+- 7 caractères du plus récent : ba0af06
 
-DELL@DESKTOP-OCF6B43 MINGW64 ~/Desktop/TP/tp-02-zones-git/inventaire (main)
-$ ^C
+Fin du TP 02
 
-DELL@DESKTOP-OCF6B43 MINGW64 ~/Desktop/TP/tp-02-zones-git/inventaire (main)
 $ git status
 On branch main
-Changes to be committed:
-  (us
+nothing to commit, working tree clean
 
-
-
+$ git log --oneline
+ba0af06 (HEAD -> main) fin du TP 02
+5766e0a ajout du README
