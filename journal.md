@@ -1,4 +1,4 @@
-# Journal TP 02 — Comprendre les zones Git
+ Journal TP 02  Comprendre les zones Git
 
 1) Un dépôt neuf
 
@@ -102,7 +102,7 @@ nothing added to commit but untracked files present
 
 Paire réelle : unmodified/unmodified
 
-8) Modifier README.md + indexer pom.xml
+8) Modifier README.md et indexer pom.xml
 
 $ git add pom.xml
 $ git status -s
